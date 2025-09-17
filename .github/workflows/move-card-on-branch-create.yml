@@ -1,0 +1,68 @@
+name: Move issue card to In Progress column on branch creation
+
+on:
+  create:
+    branches:
+      - '*'   # run on any branch creation
+
+jobs:
+  move-card:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      projects: write    # needed for classic project API
+    steps:
+      - name: Extract issue number from branch name
+        id: extract
+        run: |
+          if [[ "${GITHUB_REF_NAME}" =~ issue-([0-9]+) ]]; then
+            echo "ISSUE=${BASH_REMATCH[1]}" >> $GITHUB_ENV
+          fi
+
+      - name: Move card to In Progress
+        if: env.ISSUE != ''
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue_number = process.env.ISSUE;
+            const username = 'kotteletfisk'; // your GitHub username
+            const projectNumber = 3;         // project "number" from the URL
+            const targetColumnName = 'In Progress';
+
+            // 1. Fetch user projects and find project by number
+            const projects = await github.projects.listForUser({ username });
+            const project = projects.data.find(p => p.number === projectNumber);
+            if (!project) {
+              core.setFailed(`Project #${projectNumber} not found for ${username}`);
+            }
+
+            // 2. List all columns for that project
+            const columns = await github.projects.listColumns({
+              project_id: project.id
+            });
+
+            // 3. Find target column
+            const targetColumn = columns.data.find(c => c.name === targetColumnName);
+            if (!targetColumn) {
+              core.setFailed(`Column '${targetColumnName}' not found`);
+            }
+
+            // 4. Search all columns for card with this issue
+            for (const col of columns.data) {
+              const cards = await github.projects.listCards({ column_id: col.id });
+              for (const card of cards.data) {
+                if (card.content_url && card.content_url.includes(`/issues/${issue_number}`)) {
+                  // 5. Move card
+                  await github.projects.moveCard({
+                    card_id: card.id,
+                    position: 'top',
+                    column_id: targetColumn.id
+                  });
+                  core.info(`Moved issue #${issue_number} to ${targetColumnName}`);
+                  return;
+                }
+              }
+            }
+
+            core.warning(`No card found for issue #${issue_number}`);
