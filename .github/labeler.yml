@@ -1,0 +1,23 @@
+# Area prefixes to auto assign labels
+backend:
+  - changed-files:
+      - any-glob-to-any-file: src/backend/**
+
+frontend:
+  - changed-files:
+      - any-glob-to-any-file: src/frontend/**
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: docs/**
+      - any-glob-to-any-file: "**/*.md"
+
+# branch prefixes
+feature:
+  - head-branch: ["^feat", "feat"]
+
+bug:
+  - head-branch: ["^fix", "fix"]
+
+documentation:
+  - head-branch: ["^docs", "docs"]
