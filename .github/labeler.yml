@@ -1,19 +1,18 @@
-# Area prefixes to auto assign labels
-frontend:
-  - "web/**"
-  - "ui/**"
+# Areas by path (relative to repo root)
 backend:
-  - "service/**"
-  - "api/**"
-database:
-  - "persistence/**"
-devops:
-  - ".github/**"
-  - "infra/**"
-docs:
-  - "docs/**"
+  - changed-files:
+      - any-glob-to-any-file: src/backend/**
 
-# branch prefixes
+frontend:
+  - changed-files:
+      - any-glob-to-any-file: src/frontend/**
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: docs/**
+      - any-glob-to-any-file: "**/*.md"
+
+# Branch prefixes (Trunk-Based)
 feature:
   - head-branch: ["^feat", "feat"]
 
