@@ -1,5 +1,6 @@
 name: Issue Metrics
-# Generates a 7-day issue activity report and publishes it as a GitHub issue
+# Generates a 7-day issue activity report and publishes it as a GitHub issue.
+# Lets see if we go insane
 
 on:
   schedule:
