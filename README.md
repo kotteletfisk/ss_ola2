@@ -44,4 +44,4 @@ It creates a daily report as an issue we can use to better understand our workfl
 
 ### License
 
-GNU General Public License
+[GNU General Public License](LICENSE)
