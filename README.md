@@ -19,6 +19,14 @@ If you want to use this project as a template for your own work, you can click "
 Are you looking to contribute? Read the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ### Automation Workflows
+As this projects branching strategy is based on "Trunk Based Development", the automation of labeling is mostly based on pushing rather than Pull Requests.
+
+We base our branches on the issues, which we have labeled with priority and type of issue (Like feature or bug). The type of changes being made are also labeled, but through automation using workflows.
+[Here](.github/labeler.yml) the labels are defined and which of the code they are linked to.
+
+After creating a branch, based on an issue, and doing a push with changes in src/backend/ the following [workflow](.github/workflows/labels-on-push.yml) runs and labels the issue with "backend".
+
+Pull Requests "can" be used to merge code to main, which then will automatically move issues from "ready" to "done" when approved and merged, however this is not a part of the base branching strategy.
 
 
 
