@@ -27,9 +27,17 @@ If you want to use this project as a template for your own work, you can click "
 Are you looking to contribute? Read the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ### Automation Workflows
+As this projects branching strategy is based on "Trunk Based Development", the automation of labeling is mostly based on pushing rather than Pull Requests.
+
+We base our branches on the issues, which we have labeled with priority and type of issue (Like feature or bug). The type of changes being made are also labeled, but through automation using workflows.
+[Here](.github/labeler.yml) the labels are defined and which of the code they are linked to.
 
 The template is meant to encourage CI workflow. We do this by not restricting push access to the mainline branch, and automate updates to issues based on branch creation and merges. This helps us keep overview on the progress of the project, while eliminating much manual work normally required by a kanban board.
+After creating a branch, based on an issue, and doing a push with changes in src/backend/ the following [workflow](.github/workflows/labels-on-push.yml) runs and labels the issue with "backend".
 
+Pull Requests "can" be used to merge code to main, which then will automatically move issues from "ready" to "done" when approved and merged, however this is not a part of the base branching strategy.
+
+Upon issue creation you choose from different premade templates e.g. feature or bug, which require different information filled. Issues can also be closed via the commit conventions, by using the GitHub native keywords "fixes", "closes" or "resolves", when commits are pushed to the main branch.
 
 ### Issue metrics
 
