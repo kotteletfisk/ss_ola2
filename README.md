@@ -23,6 +23,7 @@ Are you looking to contribute? Read the guidelines in [CONTRIBUTING.md](CONTRIBU
 
 ### Automation Workflows
 
+The template is meant to encourage CI workflow. We do this by not restricting push access to the mainline branch, and automate updates to issues based on branch creation and merges. This helps us keep overview on the progress of the project, while eliminating much manual work normally required by a kanban board.
 
 
 ### Issue metrics
