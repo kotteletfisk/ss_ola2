@@ -19,8 +19,10 @@ jobs:
         shell: bash
         run: |
           SINCE=$(date -u -d '7 days ago' +%Y-%m-%d)
+          echo $SINCE
           TODAY=$(date -u +%Y-%m-%d)
-          SEARCH_QUERY="repo:${{ github.repository }} is:issue created:>=$SINCE"
+          SEARCH_QUERY="repo:${{ github.repository }} is:issue created:>=${SINCE}"
+          
           echo "SINCE=$SINCE" >> $GITHUB_ENV
           echo "TODAY=$TODAY" >> $GITHUB_ENV
           echo "SEARCH_QUERY=$SEARCH_QUERY" >> $GITHUB_ENV
