@@ -6,31 +6,6 @@ Our first idea was to select GitFlow, as we are already familiar with this frame
 We decided to go with Trunk Based Development. The teams work will be done in short-lived branches, which then are frequently merged to the trunk.
 We talked about maybe implementing a development branch later on, but for now will stay with a "true" Trunk Based Development strategy.
 
-### Using Dev Containers
-
-The dev container specifies a common environment for development and testing. This includes stuff like OS, Java environment, Build manager (Maven) and version control. It excludes stuff like IDE and personal dev preferences.
-
-We use a simple container running a Debian Linux distribution with Java 21, Maven and Git.
-
-To run the devcontainer, we need middlware to parse the configuration (devcontainer.json), build a docker image, and run it as our env.
-
-**VSCode**
-
-- Install ´Dev Containers´ plugin
-
-- Use command palette -> Build Dev Container.
-
-- SSH credentials gets injected into the container, so we can push commits normally.
-    - On Linux, this works with `ssh-agent`. If we run into problems with invalid SSH keys, we might have to add out local keys to the agent by runnin `ssh-add` (Adds keys from default .ssh directory)
-
-**IntelliJ**
-
-- Use `Dev Containers` from welcome screen (requires Ultimate)
-
-- Install `Docker` and `Dev Containers` plugin from marketplace if using community edition
-
-- Press `Create dev container and mount resources`
-
 
 ### Issue metrics
 

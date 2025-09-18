@@ -14,7 +14,15 @@ or with SSH:
 git clone git@github.com:kotteletfisk/ss_ola2.git
 ```
 
+### Using Dev Containers
+
 Make sure to have docker installed on your machine, to be able to run the devcontainer.
+
+The dev container specifies a common environment for development and testing. This includes OS, Java environment, Build manager (Maven) and version control. It excludes stuff like IDE and personal dev preferences.
+
+We use a simple container running a Debian Linux distribution with Java 21, Maven and Git.
+
+To run the devcontainer, we need middlware to parse the configuration (devcontainer.json), build a docker image, and run it as our env.
 
 Depending on your IDE, there are different ways to run and use the devcontainer.
 
@@ -27,6 +35,12 @@ Keep in mind that you need to have IntelliJ Ultimate edition to be able to use t
 
 #### VS Code
 
+- Install ´Dev Containers´ plugin
+
+- Use command palette -> Build Dev Container.
+
+- SSH credentials gets injected into the container, so we can push commits normally.
+    - On Linux, this works with `ssh-agent`. If we run into problems with invalid SSH keys, we might have to add out local keys to the agent by runnin `ssh-add` (Adds keys from default .ssh directory)
 
 ## Branching rules
 
