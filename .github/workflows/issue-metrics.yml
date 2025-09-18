@@ -18,9 +18,14 @@ jobs:
       - name: Set time window (last 7 days)
         shell: bash
         run: |
-          echo "SINCE=$(date -u -d '7 days ago' +%Y-%m-%d)" >> $GITHUB_ENV
-          echo "TODAY=$(date -u +%Y-%m-%d)" >> $GITHUB_ENV
-          echo "SEARCH_QUERY=repo:${{ github.repository }} is:issue created:>=${SINCE}" >> $GITHUB_ENV
+          SINCE=$(date -u -d '7 days ago' +%Y-%m-%d)
+          echo $SINCE
+          TODAY=$(date -u +%Y-%m-%d)
+          SEARCH_QUERY="repo:${{ github.repository }} is:issue created:>=${SINCE}"
+          
+          echo "SINCE=$SINCE" >> $GITHUB_ENV
+          echo "TODAY=$TODAY" >> $GITHUB_ENV
+          echo "SEARCH_QUERY=$SEARCH_QUERY" >> $GITHUB_ENV
 
       - name: Run issue-metrics
         uses: github/issue-metrics@v3
