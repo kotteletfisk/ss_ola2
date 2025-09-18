@@ -34,3 +34,5 @@ Every weekday at 7, it runs an [Issue Metrics Action](https://github.com/marketp
 It creates a daily report as an issue we can use to better understand our workflow. 
 
 ### License
+
+GNU General Public License
