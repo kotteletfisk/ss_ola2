@@ -2,6 +2,9 @@
 
 ### Made By
 
+Pelle Hald Vedsmand - cph-pv73@stud.ek.dk
+Lasse Hansen - lh479@stud.ek.dk
+Nicolai Rosendahl - cph-nr135@stud.ek.dk
 
 ### About the Project
 
