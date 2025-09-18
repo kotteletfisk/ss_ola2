@@ -20,7 +20,7 @@ jobs:
         run: |
           echo "SINCE=$(date -u -d '7 days ago' +%Y-%m-%d)" >> $GITHUB_ENV
           echo "TODAY=$(date -u +%Y-%m-%d)" >> $GITHUB_ENV
-          echo "SEARCH_QUERY=repo:${{ github.repository }} is:issue created:>$SINCE" >> $GITHUB_ENV
+          echo "SEARCH_QUERY=repo:${{ github.repository }} is:issue created:>=${{ env.SINCE }}" >> $GITHUB_ENV
 
       - name: Run issue-metrics
         uses: github/issue-metrics@v3
