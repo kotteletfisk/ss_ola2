@@ -28,7 +28,7 @@ After creating a branch, based on an issue, and doing a push with changes in src
 
 Pull Requests "can" be used to merge code to main, which then will automatically move issues from "ready" to "done" when approved and merged, however this is not a part of the base branching strategy.
 
-
+Upon issue creation you choose from different premade templates e.g. feature or bug, which require different information filled. Issues can also be closed via the commit conventions, by using the GitHub native keywords "fixes", "closes" or "resolves", when commits are pushed to the main branch.
 
 ### Issue metrics
 
